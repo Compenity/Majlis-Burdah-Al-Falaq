@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title >Majlis Burdah - Pengajian Kitab Al-Burdah</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="AL.png" type="image/svg">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap');
+        
+        :root {
+            --primary: #1a4d2e;
+            --secondary: #4f6f52;
+            --accent: #f5efe6;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            overflow-x: hidden;
+        }
+        
+        .arabic-text {
+            font-family: 'Amiri', serif;
+            font-size: 1.5rem;
+            line-height: 2.5rem;
+            direction: rtl;
+        }
+        
+        .hero-section {
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('hdr3.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        min-height: 70vh;
+        padding: 4rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        }
+
+        @media (max-width: 640px) {
+       .hero-section {
+        background-position: top;
+        padding: 3rem 1rem;
+        }
+        }
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .countdown-item {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .timeline-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -20px;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 20px;
+            background-color: var(--secondary);
+        }
+        
+        .floating-btn {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        /* Mobile specific adjustments */
+        @media (max-width: 640px) {
+            .hero-section {
+                min-height: 80vh;
+                padding-top: 60px;
+            }
+            
+            .hero-section h1 {
+                font-size: 2.5rem;
+                line-height: 1.2;
+            }
+            
+            .hero-section p {
+                font-size: 1.1rem;
+            }
+            
+            .arabic-text {
+                font-size: 1.2rem;
+                line-height: 2rem;
+            }
+            
+            .countdown-item {
+                width: 70px !important;
+                padding: 10px !important;
+            }
+            
+            .countdown-item div:first-child {
+                font-size: 1.8rem !important;
+            }
+            
+            .timeline-item:not(:last-child)::after {
+                left: 20px;
+                bottom: -15px;
+                height: 15px;
+            }
+            
+            .floating-btn {
+                padding: 12px 24px;
+                font-size: 1rem;
+            }
+            
+            .testimonial-grid {
+                grid-template-columns: 1fr !important;
+            }
+            
+            .contact-section {
+                flex-direction: column;
+            }
+            
+            .contact-info, .contact-map {
+                width: 100% !important;
+                padding-right: 0 !important;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+            }
+        }
+        
+        /* Tablet adjustments */
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .hero-section h1 {
+                font-size: 3.5rem;
+            }
+            
+            .testimonial-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+            
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Header/Navbar -->
+<header class="bg-white shadow-lg sticky top-0 z-50 border-b border-green-100">
+  <div class="container mx-auto px-4 py-3 flex justify-between items-center relative">
+    
+    <!-- Logo & Title -->
+    <div class="flex items-center space-x-3">
+      <i class="fas fa-mosque text-3xl text-green-700 animate-pulse"></i>
+      <h1 class="text-2xl font-bold text-green-800 tracking-wide bg-gradient-to-r from-green-700 to-green-500 bg-clip-text text-transparent">
+        Majlis Burdah
+      </h1>
+    </div>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex space-x-6">
+      <a href="#home" class="text-green-800 hover:text-green-600 font-medium relative group transition duration-300">
+        Beranda
+        <span class="block h-0.5 bg-green-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+      </a>
+      <a href="#about" class="text-green-800 hover:text-green-600 font-medium relative group transition duration-300">
+        Tentang
+        <span class="block h-0.5 bg-green-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+      </a>
+      <a href="#schedule" class="text-green-800 hover:text-green-600 font-medium relative group transition duration-300">
+        Jadwal
+        <span class="block h-0.5 bg-green-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+      </a>
+      <a href="#gallery" class="text-green-800 hover:text-green-600 font-medium relative group transition duration-300">
+        Galeri
+        <span class="block h-0.5 bg-green-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+      </a>
+      <a href="#contact" class="text-green-800 hover:text-green-600 font-medium relative group transition duration-300">
+        Kontak
+        <span class="block h-0.5 bg-green-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+      </a>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button class="md:hidden text-green-800 focus:outline-none" id="mobile-menu-button">
+      <i class="fas fa-bars text-2xl"></i>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="md:hidden hidden bg-gradient-to-b from-white via-green-50 to-white w-full px-4 py-5 shadow-inner transition-all duration-300 ease-in-out border-t border-green-100">
+    <div class="flex flex-col space-y-4 text-center">
+      <a href="#home" class="text-green-800 hover:text-green-600 font-medium transition">Beranda</a>
+      <a href="#about" class="text-green-800 hover:text-green-600 font-medium transition">Tentang</a>
+      <a href="#schedule" class="text-green-800 hover:text-green-600 font-medium transition">Jadwal</a>
+      <a href="#gallery" class="text-green-800 hover:text-green-600 font-medium transition">Galeri</a>
+      <a href="#contact" class="text-green-800 hover:text-green-600 font-medium transition">Kontak</a>
+    </div>
+  </div>
+</header>
+
+
+
+<section id="home" class="hero-section flex items-center justify-center text-white py-16 px-4" data-aos="fade-down">
+    <div class="container mx-auto text-center">
+        <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-6" data-aos="fade-down" data-aos-delay="100">
+            Pengajian Kitab Al-Burdah
+        </h1>
+        <p class="text-lg sm:text-xl md:text-2xl mb-8 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+            "Barangsiapa membaca Burdah dengan penuh keyakinan dan keikhlasan, maka Allah akan memberikan syafaat melalui Nabi Muhammad SAW"
+        </p>
+
+        <div class="flex flex-wrap justify-center items-center gap-4 mb-12">
+            <div class="countdown-item bg-white bg-opacity-10 rounded-lg p-4 w-20 sm:w-24" data-aos="zoom-in-up" data-aos-delay="300">
+                <div class="text-2xl sm:text-3xl font-bold" id="days">00</div>
+                <div class="text-sm">Hari</div>
+            </div>
+            <div class="countdown-item bg-white bg-opacity-10 rounded-lg p-4 w-20 sm:w-24" data-aos="zoom-in-up" data-aos-delay="400">
+                <div class="text-2xl sm:text-3xl font-bold" id="hours">00</div>
+                <div class="text-sm">Jam</div>
+            </div>
+            <div class="countdown-item bg-white bg-opacity-10 rounded-lg p-4 w-20 sm:w-24" data-aos="zoom-in-up" data-aos-delay="500">
+                <div class="text-2xl sm:text-3xl font-bold" id="minutes">00</div>
+                <div class="text-sm">Menit</div>
+            </div>
+            <div class="countdown-item bg-white bg-opacity-10 rounded-lg p-4 w-20 sm:w-24" data-aos="zoom-in-up" data-aos-delay="600">
+                <div class="text-2xl sm:text-3xl font-bold" id="seconds">00</div>
+                <div class="text-sm">Detik</div>
+            </div>
+        </div>
+
+        <a href="#contact" 
+           class="bg-green-700 hover:bg-green-600 text-white font-bold py-3 px-6 sm:px-8 rounded-full text-base sm:text-lg transition duration-300 inline-block floating-btn" 
+           data-aos="fade-up" 
+           data-aos-delay="700">
+            Informasi Lebih Lanjut <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="relative py-20 bg-white overflow-hidden">
+  <!-- Decorative Background -->
+  <div class="absolute inset-0 opacity-5 bg-[url('bgn.jpg')] bg-cover bg-center"></div>
+
+  <div class="container relative z-10 mx-auto px-4">
+    <!-- Heading -->
+    <div class="text-center mb-14" data-aos="fade-up">
+      <h2 class="text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-700 via-green-500 to-emerald-400">
+        Tentang Majlis Burdah
+      </h2>
+      <div class="w-28 h-1 bg-gradient-to-r from-green-500 to-yellow-300 mx-auto rounded-full mt-4 shadow"></div>
+    </div>
+
+    <!-- Content Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-y-12 gap-x-10 items-center">
+      
+      <!-- Image Section -->
+      <div data-aos="fade-right">
+        <div class="overflow-hidden rounded-3xl shadow-2xl hover:shadow-green-300/30 transition-shadow duration-300">
+          <img src="KITABB.jpg" alt="Kitab Burdah" class="w-full object-cover rounded-3xl" />
+        </div>
+      </div>
+
+      <!-- Text Section -->
+      <div data-aos="fade-left">
+        <h3 class="text-2xl md:text-3xl font-bold text-green-900 mb-5">Apa itu Kitab Al-Burdah?</h3>
+        <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-5">
+          <strong class="text-green-800">Al-Burdah</strong> adalah syair pujian agung kepada Nabi Muhammad SAW yang ditulis oleh Imam Al-Bushiri pada abad ke-13. Kitab ini berisi 160 bait syair penuh cinta, pujian, dan sanjungan terhadap akhlak serta kemuliaan Rasulullah SAW.
+        </p>
+
+        <!-- Arabic Poem Card -->
+        <div class="bg-white/30 backdrop-blur-xl border border-yellow-300/30 p-5 md:p-6 rounded-2xl shadow-xl mb-6 transition-all duration-300" data-aos="zoom-in">
+          <p class="arabic-text text-center text-xl md:text-2xl text-green-900 font-serif mb-3 leading-loose">
+            أَمِنْ تَذَكُّرِ جِيرَانٍ بِذِي سَلَمِ ♦♦♦ مَزَجْتَ دَمْعًا جَرَى مِنْ مُقْلَةٍ بِدَمِ
+          </p>
+          <p class="text-center text-gray-700 italic text-sm md:text-base">
+            "Apakah karena mengingat tetangga di Dzi Salam, engkau mencampurkan air mata yang mengalir dari mata dengan darah?"
+          </p>
+        </div>
+
+        <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-5" data-aos="fade-up">
+          Majlis Burdah kami hadir untuk mempelajari, memahami, dan menghayati kandungan syair-syair mulia ini. Dengan bimbingan ustadz yang kompeten, kita akan menggali hikmah dan pelajaran dari setiap bait dengan penuh cinta.
+        </p>
+
+        <!-- Schedule Badges -->
+        <div class="flex flex-wrap gap-3 md:gap-4" data-aos="fade-up" data-aos-delay="100">
+          <span class="bg-gradient-to-r from-green-100 to-green-50 text-green-800 px-4 py-2 rounded-full text-sm md:text-base shadow-md flex items-center hover:scale-105 transition">
+            <i class="fas fa-calendar-check mr-2 text-green-600"></i> Selasa Malam
+          </span>
+          <span class="bg-gradient-to-r from-green-100 to-green-50 text-green-800 px-4 py-2 rounded-full text-sm md:text-base shadow-md flex items-center hover:scale-105 transition">
+            <i class="fas fa-clock mr-2 text-green-600"></i> Ba'da Isya
+          </span>
+          <span class="bg-gradient-to-r from-green-100 to-green-50 text-green-800 px-4 py-2 rounded-full text-sm md:text-base shadow-md flex items-center hover:scale-105 transition">
+            <i class="fas fa-map-marker-alt mr-2 text-green-600"></i> Mushola Al-Falaq
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Benefits Section -->
+<section class="py-20 md:py-28 bg-green-50 bg-[url('/path-to-your-pattern.svg')] bg-top bg-no-repeat bg-contain">
+  <div class="container mx-auto px-4 relative z-10">
+    
+    <!-- Section Header -->
+    <div class="text-center mb-16 md:mb-24" data-aos="fade-up">
+      <h2 class="text-4xl md:text-5xl font-extrabold text-green-800 mb-5 tracking-tight leading-tight">
+        Keutamaan Membaca Burdah
+      </h2>
+      <div class="w-28 h-1 mx-auto bg-gradient-to-r from-green-600 via-green-500 to-green-600 rounded-full shadow-md"></div>
+    </div>
+
+    <!-- Grid Cards -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <!-- Card -->
+      <div class="bg-white p-8 rounded-3xl shadow-2xl hover:shadow-green-100 group transition-all duration-500 border border-green-100" data-aos="fade-up">
+        <div class="text-green-600 text-5xl mb-6 transition-transform group-hover:scale-110 duration-300">
+          <i class="fas fa-hands-praying"></i>
+        </div>
+        <h3 class="text-2xl font-semibold text-green-800 mb-4">Mendapat Syafaat</h3>
+        <p class="text-gray-700 text-base leading-relaxed">
+          Membaca Burdah dengan ikhlas dapat menjadi wasilah untuk mendapatkan syafaat Nabi Muhammad SAW di hari kiamat.
+        </p>
+      </div>
+
+      <div class="bg-white p-8 rounded-3xl shadow-2xl hover:shadow-green-100 group transition-all duration-500 border border-green-100" data-aos="fade-up" data-aos-delay="100">
+        <div class="text-green-600 text-5xl mb-6 transition-transform group-hover:scale-110 duration-300">
+          <i class="fas fa-heart"></i>
+        </div>
+        <h3 class="text-2xl font-semibold text-green-800 mb-4">Meningkatkan Kecintaan</h3>
+        <p class="text-gray-700 text-base leading-relaxed">
+          Memperdalam kecintaan kepada Rasulullah SAW melalui pemahaman akan keagungan akhlak dan perjuangan beliau.
+        </p>
+      </div>
+
+      <div class="bg-white p-8 rounded-3xl shadow-2xl hover:shadow-green-100 group transition-all duration-500 border border-green-100" data-aos="fade-up" data-aos-delay="200">
+        <div class="text-green-600 text-5xl mb-6 transition-transform group-hover:scale-110 duration-300">
+          <i class="fas fa-book-quran"></i>
+        </div>
+        <h3 class="text-2xl font-semibold text-green-800 mb-4">Memperkaya Ilmu</h3>
+        <p class="text-gray-700 text-base leading-relaxed">
+          Mempelajari sejarah Islam, sirah nabawiyah, dan pelajaran hidup dari setiap bait syair Burdah.
+        </p>
+      </div>
+
+      <div class="bg-white p-8 rounded-3xl shadow-2xl hover:shadow-green-100 group transition-all duration-500 border border-green-100" data-aos="fade-up" data-aos-delay="300">
+        <div class="text-green-600 text-5xl mb-6 transition-transform group-hover:scale-110 duration-300">
+          <i class="fas fa-peace"></i>
+        </div>
+        <h3 class="text-2xl font-semibold text-green-800 mb-4">Ketentraman Hati</h3>
+        <p class="text-gray-700 text-base leading-relaxed">
+          Membaca dan memahami Burdah dapat menenangkan hati dan menjauhkan dari kegelisahan.
+        </p>
+      </div>
+
+      <div class="bg-white p-8 rounded-3xl shadow-2xl hover:shadow-green-100 group transition-all duration-500 border border-green-100" data-aos="fade-up" data-aos-delay="400">
+        <div class="text-green-600 text-5xl mb-6 transition-transform group-hover:scale-110 duration-300">
+          <i class="fas fa-users"></i>
+        </div>
+        <h3 class="text-2xl font-semibold text-green-800 mb-4">Ukhuwah Islamiyah</h3>
+        <p class="text-gray-700 text-base leading-relaxed">
+          Mempererat tali silaturahmi antar jamaah dalam majlis ilmu dan kecintaan kepada Nabi.
+        </p>
+      </div>
+
+      <div class="bg-white p-8 rounded-3xl shadow-2xl hover:shadow-green-100 group transition-all duration-500 border border-green-100" data-aos="fade-up" data-aos-delay="500">
+        <div class="text-green-600 text-5xl mb-6 transition-transform group-hover:scale-110 duration-300">
+          <i class="fas fa-star"></i>
+        </div>
+        <h3 class="text-2xl font-semibold text-green-800 mb-4">Keberkahan</h3>
+        <p class="text-gray-700 text-base leading-relaxed">
+          Majlis yang membahas pujian kepada Nabi akan diliputi rahmat dan keberkahan dari Allah SWT.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+ <!-- Schedule Section -->
+<section id="schedule" class="py-16 md:py-20 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl md:text-4xl font-bold text-green-800 mb-4">Jadwal Pengajian</h2>
+      <div class="w-24 h-1 bg-green-600 mx-auto"></div>
+    </div>
+
+    <div class="max-w-3xl mx-auto space-y-6">
+      <!-- Item -->
+      <div class="bg-green-50 border-l-4 border-green-600 p-5 rounded-lg shadow-sm">
+        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center">
+          <div class="mb-2 sm:mb-0">
+            <h3 class="text-lg font-semibold text-green-800">Pembukaan & Pembacaan Burdah</h3>
+            <p class="text-gray-700 text-sm">Bait 1-5</p>
+          </div>
+          <span class="bg-green-600 text-white text-xs px-3 py-1 rounded-full w-max">20:30 - 20:50</span>
+        </div>
+      </div>
+
+      <div class="bg-green-50 border-l-4 border-green-600 p-5 rounded-lg shadow-sm">
+        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center">
+          <div class="mb-2 sm:mb-0">
+            <h3 class="text-lg font-semibold text-green-800">Penjelasan Makna & Tafsir</h3>
+            <p class="text-gray-700 text-sm">Oleh Ustadz Muhammad Haikal</p>
+          </div>
+          <span class="bg-green-600 text-white text-xs px-3 py-1 rounded-full w-max">20:50 - 21:05</span>
+        </div>
+      </div>
+
+      <div class="bg-green-50 border-l-4 border-green-600 p-5 rounded-lg shadow-sm">
+        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center">
+          <div class="mb-2 sm:mb-0">
+            <h3 class="text-lg font-semibold text-green-800">Diskusi & Tanya Jawab</h3>
+            <p class="text-gray-700 text-sm">Sesi interaktif dengan jamaah</p>
+          </div>
+          <span class="bg-green-600 text-white text-xs px-3 py-1 rounded-full w-max">21:05 - 21:10</span>
+        </div>
+      </div>
+
+      <div class="bg-green-50 border-l-4 border-green-600 p-5 rounded-lg shadow-sm">
+        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center">
+          <div class="mb-2 sm:mb-0">
+            <h3 class="text-lg font-semibold text-green-800">Lanjutan Pembacaan Burdah</h3>
+            <p class="text-gray-700 text-sm">Bait 5-10</p>
+          </div>
+          <span class="bg-green-600 text-white text-xs px-3 py-1 rounded-full w-max">21:10 - 21:30</span>
+        </div>
+      </div>
+
+      <div class="bg-green-50 border-l-4 border-green-600 p-5 rounded-lg shadow-sm">
+        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center">
+          <div class="mb-2 sm:mb-0">
+            <h3 class="text-lg font-semibold text-green-800">Penutup & Doa</h3>
+            <p class="text-gray-700 text-sm">Pembacaan doa penutup majlis</p>
+          </div>
+          <span class="bg-green-600 text-white text-xs px-3 py-1 rounded-full w-max">21:30 - 21:35</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+                
+                <div class="mt-8 md:mt-12 bg-green-50 p-4 md:p-6 rounded-lg" >
+                    <h3 class="text-xl font-bold text-green-800 mb-3 md:mb-4">Catatan Penting:</h3>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                            <span class="text-sm md:text-base">Pengajian dilaksanakan setiap Selasa malam ba'da Isya di Mushola Al-Falaq</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                            <span class="text-sm md:text-base">Dianjurkan datang lebih awal untuk mendapatkan tempat yang nyaman</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                            <span class="text-sm md:text-base">Bagi yang belum memiliki kitab, akan disediakan fotokopi materi</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                            <span class="text-sm md:text-base">Acara terbuka untuk umum, pria dan wanita (disediakan tempat terpisah)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+ <!-- Ustadz Section -->
+<section class="relative py-20 bg-gradient-to-b from-green-950 via-green-900 to-green-800 text-white overflow-hidden">
+  <!-- Decorative Islamic Pattern Background -->
+  <div class="absolute inset-0 bg-cover bg-center opacity-10" style="background-image: url('https://img.freepik.com/free-vector/flat-arabic-pattern-background_79603-1826.jpg?t=st=1747012595~exp=1747016195~hmac=ebbce6e0763d856ecd2c697a1123607e68a446bb33da77ec117934867c7d3da0&w=996');"></div>
+
+  <!-- Optional: Textured Overlay -->
+  <div class="absolute inset-0 bg-repeat opacity-5" style="background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');"></div>
+
+  <div class="container relative z-10 mx-auto px-4">
+    <!-- Heading -->
+    <div class="text-center mb-16" data-aos="fade-up">
+      <h2 class="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-200 via-white to-green-100 drop-shadow-xl">
+        Pemateri Pengajian
+      </h2>
+      <div class="w-28 h-1 bg-gradient-to-r from-green-300 to-white mx-auto rounded-full mt-4"></div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+      <!-- Ustadz Image -->
+      <div class="flex justify-center relative" data-aos="zoom-in" data-aos-delay="100">
+        <!-- Glow -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full bg-emerald-300 blur-3xl opacity-20"></div>
+
+        <div class="relative z-10 group">
+          <div class="rounded-full p-1 bg-gradient-to-tr from-green-400 to-white shadow-2xl border-4 border-white">
+            <img src="ust.png" alt="Ustadz Muhammad Haikal" class="rounded-full w-48 md:w-64 h-48 md:h-64 object-cover shadow-xl group-hover:shadow-emerald-400/40 transition duration-300" />
+          </div>
+          <div class="absolute -bottom-4 -right-4 bg-emerald-500 rounded-full p-3 shadow-xl border-2 border-white">
+            <i class="fas fa-graduation-cap text-white text-2xl"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ustadz Info -->
+      <div class="lg:col-span-2" data-aos="fade-left" data-aos-delay="200">
+        <h3 class="text-2xl md:text-3xl font-bold bg-gradient-to-r from-green-300 to-white bg-clip-text text-transparent mb-3">
+          Ustadz Muhammad Haikal, Lc., M.A.
+        </h3>
+        <p class="text-green-100 italic text-sm mb-4">Pakar Ilmu Hadits & Sirah Nabawiyah</p>
+
+        <!-- Card Content -->
+        <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 md:p-8 shadow-2xl mb-6 text-sm md:text-base text-green-50 leading-relaxed">
+          <p class="mb-4">
+            Lulusan <strong class="text-white">Universitas Al-Azhar Kairo</strong>, Mesir, dengan spesialisasi dalam Hadits dan Ulumul Hadits. Telah mengajar lebih dari <strong class="text-white">15 tahun</strong> kitab klasik seperti Al-Burdah, Al-Barzanji, dan syair-syair pujian Nabi SAW.
+          </p>
+          <p>
+            Pengasuh <strong class="text-white">Pondok Pesantren Darussunnah</strong>, narasumber tetap majelis nasional, dan penghafal Al-Qur'an sejak usia 15 tahun. Memiliki sanad keilmuan bersambung hingga Rasulullah SAW.
+          </p>
+        </div>
+
+        <!-- Islamic Quote -->
+        <div class="italic text-green-200 border-l-4 border-emerald-300 pl-4 mb-6">
+          "Mereka yang memuliakan ilmu dan pengajian, niscaya dimuliakan Allah di dunia dan akhirat."
+        </div>
+
+        <!-- Badges -->
+        <div class="flex flex-wrap gap-3 md:gap-4" data-aos="fade-right" data-aos-delay="300">
+          <span class="bg-white text-green-800 px-4 py-2 rounded-full text-xs md:text-sm font-semibold shadow hover:bg-green-100 transition">
+            <i class="fas fa-graduation-cap mr-2 text-green-600"></i> Al-Azhar University
+          </span>
+          <span class="bg-white text-green-800 px-4 py-2 rounded-full text-xs md:text-sm font-semibold shadow hover:bg-green-100 transition">
+            <i class="fas fa-book mr-2 text-green-600"></i> Hafizh Al-Qur'an
+          </span>
+          <span class="bg-white text-green-800 px-4 py-2 rounded-full text-xs md:text-sm font-semibold shadow hover:bg-green-100 transition">
+            <i class="fas fa-mosque mr-2 text-green-600"></i> Pengasuh Ponpes
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+ <!-- Gallery Section -->
+<section id="gallery" class="py-16 md:py-20 bg-gradient-to-b from-white via-green-50 to-green-100 relative overflow-hidden">
+  <!-- Ornamental Background -->
+  <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')] opacity-10 z-0"></div>
+
+  <div class="container relative z-10 mx-auto px-4">
+    <div class="text-center mb-12 md:mb-16" data-aos="fade-up">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-green-800 mb-3 tracking-tight">Galeri Majlis</h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-green-600 to-yellow-400 mx-auto rounded-full"></div>
+      <p class="text-gray-600 mt-3 text-sm md:text-base">Dokumentasi suasana hangat dan penuh berkah dalam Majlis Burdah</p>
+    </div>
+
+    <!-- Galeri Grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6" data-aos="fade-up" data-aos-delay="100">
+      <!-- Image Card -->
+      <!-- Ulangi blok ini untuk tiap gambar -->
+      <div class="relative group rounded-2xl shadow-lg border-2 border-transparent hover:border-green-600 hover:shadow-green-200 overflow-hidden transition duration-500">
+        <img src="ngarak.jpg" alt="Majlis Burdah" class="w-full h-44 sm:h-52 md:h-64 object-cover group-hover:scale-105 transition duration-500 ease-in-out" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-3">
+          <p class="text-white text-sm font-medium">Majlis Burdah</p>
+        </div>
+      </div>
+
+      <div class="relative group rounded-2xl shadow-lg border-2 border-transparent hover:border-green-600 hover:shadow-green-200 overflow-hidden transition duration-500">
+        <img src="nasi.jpg" alt="Kitab Burdah" class="w-full h-44 sm:h-52 md:h-64 object-cover group-hover:scale-105 transition duration-500 ease-in-out" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-3">
+          <p class="text-white text-sm font-medium">Santapan Jamaah</p>
+        </div>
+      </div>
+
+      <div class="relative group rounded-2xl shadow-lg border-2 border-transparent hover:border-green-600 hover:shadow-green-200 overflow-hidden transition duration-500">
+        <img src="g1.jpg" alt="Masjid" class="w-full h-44 sm:h-52 md:h-64 object-cover group-hover:scale-105 transition duration-500 ease-in-out" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-3">
+          <p class="text-white text-sm font-medium">Masjid Kegiatan</p>
+        </div>
+      </div>
+
+      <div class="relative group rounded-2xl shadow-lg border-2 border-transparent hover:border-green-600 hover:shadow-green-200 overflow-hidden transition duration-500">
+        <img src="pemandangan.jpg" alt="Jamaah" class="w-full h-44 sm:h-52 md:h-64 object-cover group-hover:scale-105 transition duration-500 ease-in-out" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-3">
+          <p class="text-white text-sm font-medium">Suasana Majlis</p>
+        </div>
+      </div>
+
+      <div class="relative group rounded-2xl shadow-lg border-2 border-transparent hover:border-green-600 hover:shadow-green-200 overflow-hidden transition duration-500">
+        <img src="ajar.jpg" alt="Ustadz" class="w-full h-44 sm:h-52 md:h-64 object-cover group-hover:scale-105 transition duration-500 ease-in-out" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-3">
+          <p class="text-white text-sm font-medium">Ustadz Menyampaikan</p>
+        </div>
+      </div>
+
+      <div class="relative group rounded-2xl shadow-lg border-2 border-transparent hover:border-green-600 hover:shadow-green-200 overflow-hidden transition duration-500">
+        <img src="pengajian.jpg" alt="Pengajian" class="w-full h-44 sm:h-52 md:h-64 object-cover group-hover:scale-105 transition duration-500 ease-in-out" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-3">
+          <p class="text-white text-sm font-medium">Momen Pengajian</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tombol -->
+    <div class="text-center mt-10" data-aos="fade-up" data-aos-delay="200">
+      <button class="bg-gradient-to-r from-green-700 to-yellow-500 hover:from-green-600 hover:to-yellow-400 text-white font-semibold px-6 py-3 rounded-full text-base md:text-lg shadow-xl transition-all duration-300 ease-in-out inline-flex items-center space-x-2">
+        <span>Lihat Lebih Banyak</span>
+        <i class="fas fa-arrow-right animate-pulse"></i>
+      </button>
+    </div>
+  </div>
+</section>
+
+
+<!-- Testimonial Section -->
+<section class="py-20 bg-gradient-to-br from-green-50 via-white to-green-100 relative overflow-hidden">
+  <!-- Ornamental Background -->
+  <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')] opacity-10 z-0"></div>
+
+  <div class="container relative z-10 mx-auto px-4">
+    <div class="text-center mb-16" data-aos="fade-down">
+      <h2 class="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-green-700 to-yellow-500 text-transparent bg-clip-text tracking-wide uppercase">
+        Apa Kata Mereka?
+      </h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-yellow-400 to-green-600 mx-auto rounded-full mt-4"></div>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3" data-aos="fade-up" data-aos-delay="100">
+      <!-- Testimonial Card -->
+      <div class="bg-white p-6 md:p-8 rounded-3xl border-2 border-transparent hover:border-yellow-400 shadow-xl transition-all duration-300 max-w-md mx-auto group">
+        <div class="flex items-center mb-5">
+          <img src="afis.jpg" alt="Hafidz Hanafi" class="w-14 h-14 rounded-full border-2 border-yellow-400 shadow-sm" />
+          <div class="ml-4">
+            <h4 class="font-bold text-green-800 text-base md:text-lg">Hafidz Hanafi</h4>
+            <div class="flex text-yellow-400 text-sm">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+          </div>
+        </div>
+        <p class="text-gray-700 italic text-sm md:text-base leading-relaxed">"Sejak mengikuti majlis Burdah, kecintaan saya kepada Rasulullah semakin bertambah. Penjelasan Ustadz sangat mudah dipahami dan menyentuh hati."</p>
+      </div>
+
+      <!-- Testimonial Card 2 -->
+      <div class="bg-white p-6 md:p-8 rounded-3xl border-2 border-transparent hover:border-yellow-400 shadow-xl transition-all duration-300 max-w-md mx-auto group">
+        <div class="flex items-center mb-5">
+          <img src="sito.jpg" alt="Sito" class="w-14 h-14 rounded-full border-2 border-yellow-400 shadow-sm" />
+          <div class="ml-4">
+            <h4 class="font-bold text-green-800 text-base md:text-lg">Sito</h4>
+            <div class="flex text-yellow-400 text-sm">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+          </div>
+        </div>
+        <p class="text-gray-700 italic text-sm md:text-base leading-relaxed">"Pengajian Burdah ini sangat berbeda dengan pengajian biasa. Kita diajak untuk benar-benar menghayati setiap bait syair dan mengambil pelajaran darinya."</p>
+      </div>
+
+      <!-- Testimonial Card 3 -->
+      <div class="bg-white p-6 md:p-8 rounded-3xl border-2 border-transparent hover:border-yellow-400 shadow-xl transition-all duration-300 max-w-md mx-auto group">
+        <div class="flex items-center mb-5">
+          <img src="arip.jpg" alt="Arif Wijaksono" class="w-14 h-14 rounded-full border-2 border-yellow-400 shadow-sm" />
+          <div class="ml-4">
+            <h4 class="font-bold text-green-800 text-base md:text-lg">Arif Wijaksono</h4>
+            <div class="flex text-yellow-400 text-sm">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            </div>
+          </div>
+        </div>
+        <p class="text-gray-700 italic text-sm md:text-base leading-relaxed">"Suasana majlis yang khusyuk membuat saya betah berlama-lama. Kini setiap Jum'at malam selalu saya nantikan untuk hadir di majlis ini."</p>
+      </div>
+    </div>
+  </div>
+</section>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init();</script>
+
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 md:py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-green-800 mb-4">Hubungi Kami</h2>
+                <div class="w-24 h-1 bg-green-600 mx-auto"></div>
+            </div>
+            
+            <div class="max-w-6xl mx-auto">
+                <div class="flex flex-col md:flex-row contact-section">
+                    <div class="md:w-1/2 mb-8 md:mb-0 md:pr-6 lg:pr-10 contact-info">
+                        <h3 class="text-2xl font-bold text-green-800 mb-4 md:mb-6">Informasi Kontak</h3>
+                        
+                        <div class="space-y-4 md:space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-green-100 p-2 md:p-3 rounded-full mr-3 md:mr-4">
+                                    <i class="fas fa-map-marker-alt text-green-700 text-lg md:text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-green-800 mb-1 text-sm md:text-base">Alamat</h4>
+                                    <p class="text-gray-700 text-sm md:text-base">Mushola Al-Falaq, Jl. Haji Jeni II, Gandaria Utara, Kebayoran Baru, Kota Jakarta</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-green-100 p-2 md:p-3 rounded-full mr-3 md:mr-4">
+                                    <i class="fas fa-phone-alt text-green-700 text-lg md:text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-green-800 mb-1 text-sm md:text-base">Telepon</h4>
+                                    <p class="text-gray-700 text-sm md:text-base">+62 812 3456 7890 (Admin)</p>
+                                    <p class="text-gray-700 text-sm md:text-base">+62 823 4567 8901 (Bendahara)</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-green-100 p-2 md:p-3 rounded-full mr-3 md:mr-4">
+                                    <i class="fas fa-envelope text-green-700 text-lg md:text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-green-800 mb-1 text-sm md:text-base">Email</h4>
+                                    <p class="text-gray-700 text-sm md:text-base">info@majlisburdah.com</p>
+                                    <p class="text-gray-700 text-sm md:text-base">admin@majlisburdah.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-green-100 p-2 md:p-3 rounded-full mr-3 md:mr-4">
+                                    <i class="fas fa-clock text-green-700 text-lg md:text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-green-800 mb-1 text-sm md:text-base">Jadwal Pengajian</h4>
+                                    <p class="text-gray-700 text-sm md:text-base">Selasa Malam : Pembacaan Burdah</p>
+                                    <p class="text-gray-700 text-sm md:text-base">Kamis Malam  : Pembacaan Surah Yasin</p>
+                                    <p class="text-gray-700 text-sm md:text-base">Sabtu Malam  : Kajian Kitab</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 md:mt-10">
+                            <h4 class="font-bold text-green-800 mb-3 md:mb-4 text-sm md:text-base">Sosial Media</h4>
+                            <div class="flex flex-wrap gap-2 md:gap-4">
+                                <a href="#" class="bg-green-100 text-green-700 p-2 md:p-3 rounded-full hover:bg-green-200 transition duration-300">
+                                    <i class="fab fa-facebook-f text-lg md:text-xl"></i>
+                                </a>
+                                <a href="#" class="bg-green-100 text-green-700 p-2 md:p-3 rounded-full hover:bg-green-200 transition duration-300">
+                                    <i class="fab fa-twitter text-lg md:text-xl"></i>
+                                </a>
+                                <a href="https://www.instagram.com/majlis.burdah.alfalaq/" class="bg-green-100 text-green-700 p-2 md:p-3 rounded-full hover:bg-green-200 transition duration-300">
+                                    <i class="fab fa-instagram text-lg md:text-xl"></i>
+                                </a>
+                                <a href="https://www.youtube.com/@hb_sholawat17" class="bg-green-100 text-green-700 p-2 md:p-3 rounded-full hover:bg-green-200 transition duration-300">
+                                    <i class="fab fa-youtube text-lg md:text-xl"></i>
+                                </a>
+                                <a href="https://www.tiktok.com/@burdah_alfalaq" class="bg-green-100 text-green-700 p-2 md:p-3 rounded-full hover:bg-green-200 transition duration-300">
+                                    <i class="fab fa-tiktok text-lg md:text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-1/2 contact-map">
+                        <h3 class="text-2xl font-bold text-green-800 mb-4 md:mb-6">Peta Lokasi</h3>
+                        <div class="bg-gray-200 rounded-xl overflow-hidden" style="height: 300px; min-height: 300px;">
+                            <!-- Google Maps Embed -->
+                            <iframe 
+                              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.9999999999995!2d106.7937465!3d-6.2618854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f1cc9a6512e1%3A0x4d516d011ab8fa2f!2sMusala%20Al-Falaq!5e0!3m2!1sen!2sid!4v1629876543210!5m2!1sen!2sid" 
+                              width="100%" 
+                              height="100%" 
+                              style="border:0;" 
+                              allowfullscreen="" 
+                              loading="lazy" 
+                              referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ <!-- Footer -->
+<footer class="bg-green-900 text-white py-10 md:py-16">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+      <!-- Tentang -->
+      <div>
+        <h3 class="text-xl font-bold mb-4">Majlis Burdah</h3>
+        <p class="text-green-200 text-sm leading-relaxed">
+          Majlis pengajian kitab Al-Burdah yang membahas pujian kepada Nabi Muhammad SAW, sejarah serta pelajaran dari setiap bait syairnya.
+        </p>
+      </div>
+
+      <!-- Tautan Cepat -->
+      <div>
+        <h3 class="text-xl font-bold mb-4">Tautan Cepat</h3>
+        <ul class="space-y-2">
+          <li><a href="#home" class="text-green-200 hover:text-white transition-all duration-300">Beranda</a></li>
+          <li><a href="#about" class="text-green-200 hover:text-white transition-all duration-300">Tentang Burdah</a></li>
+          <li><a href="#schedule" class="text-green-200 hover:text-white transition-all duration-300">Jadwal</a></li>
+          <li><a href="#gallery" class="text-green-200 hover:text-white transition-all duration-300">Galeri</a></li>
+          <li><a href="#contact" class="text-green-200 hover:text-white transition-all duration-300">Kontak</a></li>
+        </ul>
+      </div>
+
+      <!-- Program Lain -->
+      <div>
+        <h3 class="text-xl font-bold mb-4">Program Lain</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-green-200 hover:text-white transition-all duration-300">Kajian Kitab </a></li>
+          <li><a href="#" class="text-green-200 hover:text-white transition-all duration-300">Tahsin Al-Qur'an</a></li>
+          <li><a href="#" class="text-green-200 hover:text-white transition-all duration-300">Dauroh Hadits</a></li>
+          <li><a href="#" class="text-green-200 hover:text-white transition-all duration-300">Pembacaan Sholawat</a></li>
+          <li><a href="#" class="text-green-200 hover:text-white transition-all duration-300">Program Anak</a></li>
+        </ul>
+      </div>
+
+      <!-- Berlangganan -->
+      <div>
+        <h3 class="text-xl font-bold mb-4">Berlangganan</h3>
+        <p class="text-green-200 text-sm mb-4 leading-relaxed">
+          Dapatkan informasi terbaru tentang jadwal pengajian dan acara kami.
+        </p>
+        <form class="flex overflow-hidden rounded-lg border border-green-800 focus-within:ring-2 focus-within:ring-green-500">
+          <input type="email" placeholder="Email Anda" class="w-full px-4 py-2 text-sm text-gray-800 focus:outline-none" />
+          <button type="submit" class="bg-green-600 hover:bg-green-500 px-4 py-2 text-white">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="border-t border-green-800 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-green-300 text-xs md:text-sm mb-3 md:mb-0">© 2024 Majlis Burdah. All rights reserved.</p>
+      <div class="flex flex-wrap gap-4 text-xs md:text-sm">
+        <a href="#" class="text-green-300 hover:text-white transition-all duration-300">Kebijakan Privasi</a>
+        <a href="#" class="text-green-300 hover:text-white transition-all duration-300">Syarat & Ketentuan</a>
+        <a href="#" class="text-green-300 hover:text-white transition-all duration-300">FAQ</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 md:bottom-8 md:right-8 bg-green-700 text-white p-3 md:p-4 rounded-full shadow-lg opacity-0 invisible transition-all duration-300">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Countdown Timer
+        function updateCountdown() {
+            // Set the date we're counting down to (next Friday 18:30)
+            const now = new Date();
+            const nextFriday = new Date();
+            
+            // Set to next Friday
+            nextFriday.setDate(now.getDate() + (5 + 7 - now.getDay()) % 7);
+            nextFriday.setHours(18, 30, 0, 0);
+            
+            // If today is Friday and time is before 18:30
+            if (now.getDay() === 5 && now.getHours() < 18 || (now.getHours() === 18 && now.getMinutes() < 30)) {
+                nextFriday.setDate(now.getDate());
+                nextFriday.setHours(18, 30, 0, 0);
+            }
+            
+            const distance = nextFriday - now;
+            
+            // Time calculations for days, hours, minutes and seconds
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            // Display the result
+            document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+        }
+        
+        // Update the countdown every 1 second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        
+        // Back to Top Button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+    <script>
+        AOS.init();
+      </script>
+</body>
+</html>
